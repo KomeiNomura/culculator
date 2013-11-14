@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController{
+    IBOutlet UILabel *result;
+}
+@property int num;
+@property int newNum;
+
+-(IBAction)numberButton:(id)sender;
+-(void)number_cul;
+
+
+
 
 @end

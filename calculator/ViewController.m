@@ -7,12 +7,36 @@
 //
 
 #import "ViewController.h"
-
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
+
+-(id)initWithNumber
+{
+    self = [super init];
+    if(self != nil) {
+        _newNum = 10;
+    }
+    return self;
+}
+
+
+-(IBAction)numberButton:(id)sender{
+    UIButton* pushNum = sender;  //senderをpushnumbuttonにキャスト
+    _num = pushNum.tag;   //pushNumのtagに押された数字が入っている
+    [self number_cul];
+    result.text = [NSString stringWithFormat:@"%d",_newNum];
+}
+
+-(void)outnumber_cul{
+    _newNum = _newNum*10+_num;
+}
+
+
+
+
 
 - (void)viewDidLoad
 {
@@ -25,5 +49,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 @end

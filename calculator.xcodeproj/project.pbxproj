@@ -23,6 +23,7 @@
 		6A6993AE182B5CCB006B40A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A699389182B5CCA006B40A4 /* Foundation.framework */; };
 		6A6993B6182B5CCB006B40A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A6993B4182B5CCB006B40A4 /* InfoPlist.strings */; };
 		6A6993B9182B5CCC006B40A4 /* calculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6993B8182B5CCC006B40A4 /* calculatorTests.m */; };
+		6AFF0B72182B688E00F8141E /* Calcuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AFF0B71182B688E00F8141E /* Calcuration.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		6A6993B5182B5CCB006B40A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6A6993B7182B5CCC006B40A4 /* calculatorTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = calculatorTests.h; sourceTree = "<group>"; };
 		6A6993B8182B5CCC006B40A4 /* calculatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = calculatorTests.m; sourceTree = "<group>"; };
+		6AFF0B70182B688E00F8141E /* Calcuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calcuration.h; sourceTree = "<group>"; };
+		6AFF0B71182B688E00F8141E /* Calcuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calcuration.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,8 @@
 				6A69939F182B5CCA006B40A4 /* MainStoryboard.storyboard */,
 				6A6993A2182B5CCA006B40A4 /* ViewController.h */,
 				6A6993A3182B5CCA006B40A4 /* ViewController.m */,
+				6AFF0B70182B688E00F8141E /* Calcuration.h */,
+				6AFF0B71182B688E00F8141E /* Calcuration.m */,
 				6A69938E182B5CCA006B40A4 /* Supporting Files */,
 			);
 			path = calculator;
@@ -273,6 +278,7 @@
 				6A699394182B5CCA006B40A4 /* main.m in Sources */,
 				6A699398182B5CCA006B40A4 /* AppDelegate.m in Sources */,
 				6A6993A4182B5CCA006B40A4 /* ViewController.m in Sources */,
+				6AFF0B72182B688E00F8141E /* Calcuration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +459,7 @@
 				6A6993BE182B5CCD006B40A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6A6993BF182B5CCD006B40A4 /* Build configuration list for PBXNativeTarget "calculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -461,6 +468,7 @@
 				6A6993C1182B5CCD006B40A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
