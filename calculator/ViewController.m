@@ -30,9 +30,10 @@
     result.text = [NSString stringWithFormat:@"%d",_newNum];
 }
 
--(void)outnumber_cul{
+-(void)number_cul{
     _newNum = _newNum*10+_num;
 }
+
 
 
 

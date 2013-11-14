@@ -18,6 +18,4 @@
 -(void)number_cul;
 
 
-
-
 @end
