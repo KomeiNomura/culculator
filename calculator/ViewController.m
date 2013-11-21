@@ -17,22 +17,77 @@
 {
     self = [super init];
     if(self != nil) {
-        _newNum = 10;
+        _inputNumNew = 10;
     }
     return self;
 }
 
 
 -(IBAction)numberButton:(id)sender{
-    UIButton* pushNum = sender;  //senderをpushnumbuttonにキャスト
+    UIButton* pushNum = sender;  //senderをpushNumにキャスト
     _num = pushNum.tag;   //pushNumのtagに押された数字が入っている
-    [self number_cul];
-    result.text = [NSString stringWithFormat:@"%d",_newNum];
+    [self numberCul];
+    result.text = [NSString stringWithFormat:@"%d",_inputNumNew];
 }
 
--(void)number_cul{
-    _newNum = _newNum*10+_num;
+
+
+
+
+-(void)numberCul{
+    _inputNumNew = _inputNumNew*10+_num;
 }
+
+
+-(IBAction)clearButton{
+    _resultNum = 0;
+    _inputNumNew = 0;
+    result.text = [NSString stringWithFormat:@"%d",_resultNum];}
+
+-(void)addCul{
+    _resultNum = _resultNum+_inputNumNew;
+}
+
+-(void)minusCul{
+    _resultNum = _resultNum-_inputNumNew;
+}
+
+-(void)multiCul{
+    _resultNum = _resultNum*_inputNumNew;
+}
+
+-(void)diviCul{
+    _resultNum = _resultNum/_inputNumNew;
+}
+
+-(IBAction)equalButton{
+    switch ([self state]){
+        case PULUS:
+            [self addCul];
+            break;
+        case MINUS:
+            [self minusCul];
+            break;
+        case MULTI:
+            [self multiCul];
+            break;
+        case DIVI:
+            [self diviCul];
+            break;
+    }
+    
+    result.text = [NSString stringWithFormat:@"%d",_resultNum];
+
+}
+
+-(IBAction)culType:(id)sender{
+    UIButton* pushcul = sender;
+    _state = pushcul.tag;
+    
+    _resultNum = _inputNumNew;
+    _inputNumNew = 0;
+}
+
 
 
 

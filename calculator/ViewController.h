@@ -12,10 +12,23 @@
     IBOutlet UILabel *result;
 }
 @property int num;
-@property int newNum;
+@property int inputNumNew;
+@property int resultNum;
+
+@property enum{
+    NONE,PULUS,MINUS,MULTI,DIVI
+} state;
+    
+
 
 -(IBAction)numberButton:(id)sender;
--(void)number_cul;
-
+-(void)numberCul;
+-(void)addCul;
+-(void)minusCul;
+-(void)multiCul;
+-(void)diviCul;
+-(IBAction)equalButton;
+-(IBAction)clearButton;
+-(IBAction)culType:(id)sender;
 
 @end
