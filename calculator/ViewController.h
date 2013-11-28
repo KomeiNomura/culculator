@@ -11,9 +11,12 @@
 @interface ViewController : UIViewController{
     IBOutlet UILabel *result;
 }
-@property int num;
-@property int inputNumNew;
-@property int resultNum;
+@property double num;
+@property double point;
+@property double inputNumNew;
+@property double inputNumOld;
+@property double resultNum;
+@property int flag;
 
 @property enum{
     NONE,PULUS,MINUS,MULTI,DIVI
@@ -22,13 +25,15 @@
 
 
 -(IBAction)numberButton:(id)sender;
--(void)numberCul;
--(void)addCul;
--(void)minusCul;
--(void)multiCul;
--(void)diviCul;
+-(void)numberCal;
+-(void)addCal;
+-(void)minusCal;
+-(void)multiCal;
+-(void)diviCal;
 -(IBAction)equalButton;
 -(IBAction)clearButton;
 -(IBAction)culType:(id)sender;
-
+-(void)calculateNumber;
+-(IBAction)decimalPointButton;
+-(void)deciminalPoint;
 @end

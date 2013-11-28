@@ -13,11 +13,13 @@
 
 @implementation ViewController
 
--(id)initWithNumber
-{
-    self = [super init];
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
     if(self != nil) {
-        _inputNumNew = 10;
+        _inputNumNew = 0;
+        _state = 0;
+        _flag = 0;
+        _point = 1;
     }
     return self;
 }
@@ -26,15 +28,26 @@
 -(IBAction)numberButton:(id)sender{
     UIButton* pushNum = sender;  //senderをpushNumにキャスト
     _num = pushNum.tag;   //pushNumのtagに押された数字が入っている
-    [self numberCul];
-    result.text = [NSString stringWithFormat:@"%d",_inputNumNew];
+    if(_flag == 0){
+        [self numberCal];
+    }else{
+        _point = _point/10;
+        [self deciminalPoint];
+    }
+    
+    result.text = [NSString stringWithFormat:@"%f",_inputNumNew];
 }
 
 
+-(IBAction)decimalPointButton{
+    _flag = 1;
+}
 
+-(void)deciminalPoint{
+    _inputNumNew = _inputNumNew+_num*_point;
+}
 
-
--(void)numberCul{
+-(void)numberCal{
     _inputNumNew = _inputNumNew*10+_num;
 }
 
@@ -42,56 +55,75 @@
 -(IBAction)clearButton{
     _resultNum = 0;
     _inputNumNew = 0;
-    result.text = [NSString stringWithFormat:@"%d",_resultNum];}
-
--(void)addCul{
-    _resultNum = _resultNum+_inputNumNew;
+    result.text = [NSString stringWithFormat:@"%f",_resultNum];
+    _state = 0;
+    _flag = 0;
 }
 
--(void)minusCul{
-    _resultNum = _resultNum-_inputNumNew;
+
+
+                                                                                                                   
+-(void)addCal{
+    _resultNum = _inputNumOld+_inputNumNew;
+    _inputNumOld = _resultNum;
 }
 
--(void)multiCul{
-    _resultNum = _resultNum*_inputNumNew;
+-(void)minusCal{
+    _resultNum = _inputNumOld-_inputNumNew;
+    _inputNumOld = _resultNum;
 }
 
--(void)diviCul{
-    _resultNum = _resultNum/_inputNumNew;
+-(void)multiCal{
+    _resultNum = _inputNumOld*_inputNumNew;
+    _inputNumOld = _resultNum;
+}
+
+-(void)diviCal{
+    if(_inputNumNew == 0){
+        _resultNum = 0;
+    }else{
+    _resultNum = _inputNumOld/_inputNumNew;
+    _inputNumOld = _resultNum;
+    }
 }
 
 -(IBAction)equalButton{
-    switch ([self state]){
-        case PULUS:
-            [self addCul];
-            break;
-        case MINUS:
-            [self minusCul];
-            break;
-        case MULTI:
-            [self multiCul];
-            break;
-        case DIVI:
-            [self diviCul];
-            break;
-    }
-    
-    result.text = [NSString stringWithFormat:@"%d",_resultNum];
-
+    [self calculateNumber];
 }
 
 -(IBAction)culType:(id)sender{
+    if(_state == NONE){
+        _inputNumOld = _inputNumNew;
+        _inputNumNew = 0;
+    }else{
+    [self calculateNumber];
+    }
     UIButton* pushcul = sender;
     _state = pushcul.tag;
-    
-    _resultNum = _inputNumNew;
-    _inputNumNew = 0;
 }
 
 
-
-
-
+-(void)calculateNumber{
+    switch ([self state]){
+        case NONE:             ////一回目の入力のときの処理
+            break;
+        case PULUS:
+            [self addCal];
+            break;
+        case MINUS:
+            [self minusCal];
+            break;
+        case MULTI:
+            [self multiCal];
+            break;
+        case DIVI:
+            [self diviCal];
+            break;
+    }
+    result.text = [NSString stringWithFormat:@"%f",_inputNumOld];
+    _inputNumNew = 0;
+    _flag = 0;
+}
 
 
 - (void)viewDidLoad
